@@ -1,21 +1,34 @@
-# Networking & Apklis REST API
+# Networking & API Protocol
 
-Target: `cu.uci.android.apklis` v2.0.1 (versionCode `202609030`).
+Analysis of Apklis REST endpoints, OAuth2 token handling, and HTTP stack.
 
-> [!NOTE]
-> **Status:** Structural template (pending decompilation). Known ecosystem domains are listed below as initial references; verify exact hardcoded URLs, HTTP clients, and interceptors from decompiled source.
+## Base URL & OAuth2 Token Endpoint
 
-## Ecosystem & Known Infrastructure Domains
+- **Primary API Base**: `https://api.apklis.cu/` (`defpackage.ce0`)
+- **OAuth2 Token Endpoint**: `https://api.apklis.cu/o/token/` (`defpackage.j42`, `defpackage.wh`)
+- **Web Portal & Legal Links**: `https://www.apklis.cu/application/{pkg}`, `https://apklis.cu/information/{contact,guide,terms,devterms,faq}`
 
-| Domain / URL | Role |
-| :--- | :--- |
-| `https://www.apklis.cu/` | Official Apklis web store and developer console |
-| `https://api.apklis.cu/` / `*.apklis.cu` | Catalog, search, authentication, reviews, and APK download API endpoints |
-| `https://www.apklis.cu/application/cu.uci.android.apklis` | Official store listing for the Apklis Android client |
-| `https://www.ecured.cu/Apklis` | EcuRed encyclopedia reference for Apklis |
+## `ApklisApiService` (`defpackage.wh`) Routes
 
-## Pending Analysis Sections (Post-Decompilation)
+| Method / Route | Purpose |
+|---|---|
+| `POST o/token/` | OAuth2 login and refresh-token exchange |
+| `GET o/user/me/` | Authenticated user profile |
+| `GET v3/dashboard/resume/` | Home dashboard feed |
+| `GET v3/slider/` | Featured banner slider |
+| `GET v3/application/` | App catalog listing and search |
+| `GET v3/application/{packageName}/` | App detail metadata |
+| `POST v3/application/wishlist/` | Toggle app wishlist |
+| `POST v3/release/get_url/` | Obtain signed APK download URL |
+| `GET v3/review/` | Fetch application reviews |
+| `DELETE/POST v3/application/delete_review/` | Delete user review |
+| `POST v3/suggest/` | Submit app suggestion |
+| `POST v3/complaint/` | Submit app complaint |
+| `POST v3/device/` | Register device for licensing |
+| `POST v3/notification/read-all/` | Mark notifications as read |
+| `POST v3/action/{action}/` | Dynamic action form submission |
 
-- **HTTP Stack:** OkHttp / Retrofit / Ktor versions, interceptors, User-Agent strings, and retry policies.
-- **API Endpoints:** Application catalog, search, categories, user ratings, update batch check, and payment verification routes.
-- **TLS & Certificate Pinning:** `network_security_config.xml`, custom `X509TrustManager` / `CertificatePinner`, and cleartext traffic flags.
+## HTTP Client Stack
+
+- OkHttp 3 + Retrofit 2 + Gson (`CategoryListDeserializer`, `application/json; charset=UTF-8`), plus `PublicSuffixDatabase.list` in `assets/`.
+- `ApkDownloadService` attaches `Referer: https://www.apklis.cu/` on APK downloads.
