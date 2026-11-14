@@ -1,17 +1,14 @@
-# Local Android runtime validation
+# Runtime Validation
 
-Target: `cu.uci.android.apklis-v202609030.apk`, SHA-256
-`4d23c1a911ed4a9b53762ab44fe8f6371a58a32072c055c26444b9de25ace305`.
+Scope and status of dynamic/runtime validation for **Apklis** (`cu.uci.android.apklis` v2.0.1, `versionCode` `202609030`).
 
-## Scope and safety rules
+## Static Verification Completed
 
-When performing dynamic or hybrid-APK validation in an Android emulator:
+- `make verify` confirmed package `cu.uci.android.apklis`, `versionName` `2.0.1`, `versionCode` `202609030`, `minSdkVersion` `23`, `targetSdkVersion` `36`, `compileSdkVersion` `36`, and APK SHA-256 `4d23c1a911ed4a9b53762ab44fe8f6371a58a32072c055c26444b9de25ace305`.
+- JADX 1.5.6 extracted all 22 files under `cu.uci.android.apklis.*` and 4,625 R8-repackaged classes under `defpackage.*`.
+- Apktool 3.0.3 decoded `AndroidManifest.xml`, 77 XML resources, and `assets/PublicSuffixDatabase.list`.
 
-1. Use an isolated Android Virtual Device (AVD) dedicated to research.
-2. Disable radio/network connectivity or isolate traffic unless explicitly inspecting local protocol framing.
-3. Do not submit live user credentials, payment confirmations, or unauthorized requests to production `*.apklis.cu` servers.
-4. Keep all modified/hybrid APKs, UI hierarchy dumps, screenshots, and logcat captures inside `.workspace/` (excluded from Git).
+## Outstanding Runtime Checks
 
-## Observed results
-
-Pending decompilation and initial static analysis. Record emulator environment, API level, startup behavior, and screen hierarchy comparisons here once dynamic checks are performed.
+- Emulator check of `ApklisLicenseProvider` (`content://cu.uci.android.apklis.ApklisLicenseProvider/account_data`) access control from an unprivileged third-party test app.
+- Dynamic capture of `v3/release/get_url/` and Transfermóvil payment deep link dispatch (`apklis://payment`).

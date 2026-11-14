@@ -1,38 +1,8 @@
-# Hybrid Java compiler audit
+# Java Compilation Audit
 
-Target: `cu.uci.android.apklis-v202609030.apk`, SHA-256
-`4d23c1a911ed4a9b53762ab44fe8f6371a58a32072c055c26444b9de25ace305`.
+Static compilation notes for `cu.uci.android.apklis` (`2.0.1`, `versionCode` `202609030`).
 
-`scripts/compile-reconstruction.py` compiles every Java source under
-`app/src/main/java` against a **local APK-derived bytecode jar** and a **local
-Android platform jar**. This is a dependency-backed compiler audit: it detects
-unresolved symbols, invalid signatures, type mismatches, and other Java errors
-in the reconstructed tree while retaining the APK's raw dependencies.
-It is not a standalone Android build, an APK produced from clean source, a
-resource-packaging test, behavioral equivalence, or runtime verification.
+## Scope & Dependencies
 
-## Local prerequisites and provenance
-
-- Python 3 and a JDK with `javac` on `PATH`.
-- The target APK remains local in `.workspace/bin/cu.uci.android.apklis-v202609030.apk`.
-- Pin dex2jar to **2.4**, using its official
-  [v2.4 release](https://github.com/pxb1988/dex2jar/releases/tag/v2.4) and
-  [dex-tools-v2.4.zip asset](https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip)
-  under `.workspace/tools/dex-tools-v2.4/`.
-- Convert the target APK bytecode to `.workspace/tools/target-bytecode.jar`:
-
-```sh
-bash .workspace/tools/dex-tools-v2.4/d2j-dex2jar.sh \
-  -f -o .workspace/tools/target-bytecode.jar \
-  .workspace/bin/cu.uci.android.apklis-v202609030.apk
-```
-
-## Run the full audit
-
-Once decompilation (`src/cu/uci/android/apklis/R.java`) and clean Java files exist under `app/src/main/java/`:
-
-```sh
-make compile-audit ANDROID_JAR="$HOME/Library/Android/sdk/platforms/android-36/android.jar"
-```
-
-The script writes `.workspace/compile-reconstruction/report.json` and `.workspace/compile-reconstruction/javac.log`.
+- The 20 reconstructed entrypoint classes in `app/src/main/java/cu/uci/android/apklis/` depend directly on R8-repackaged classes in `defpackage.*` (4,625 classes) as well as AndroidX, Material 3, OkHttp 3, Retrofit 2, and Kotlin stdlib.
+- Full `javac` compilation requires generating a local `target-bytecode.jar` from the APK's `classes.dex` via `dex2jar` alongside `android-36` `android.jar` (`make compile-audit ANDROID_JAR=... BYTECODE_JAR=...`).

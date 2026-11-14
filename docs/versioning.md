@@ -42,6 +42,12 @@ unzip .workspace/archives/smali-2.0.1.202609030.zip -d .
 
 Record the APK SHA-256, archive SHA-256, and decompiler versions for each target. Local ZIPs may later be uploaded as Release assets; APK binaries remain local.
 
+### Recorded Baseline Hashes (`2.0.1.202609030-v1.0`)
+
+- **Target APK**: `cu.uci.android.apklis-v202609030.apk` — SHA-256: `4d23c1a911ed4a9b53762ab44fe8f6371a58a32072c055c26444b9de25ace305`
+- **Local Smali Archive**: `.workspace/archives/smali-2.0.1.202609030.zip` — SHA-256: `a9867f53fb6c74c420f5ef2f3458f385d32d9b11865d93aa29e440697472033e`
+- **Tools**: `jadx 1.5.6`, `apktool 3.0.3`
+
 ## Comparing APK Releases
 
 Compare the first release tags for each APK. Substitute actual tag names for future versions.
