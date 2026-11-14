@@ -4,7 +4,152 @@
     "apk_version": "2.0.1",
     "version_code": 202609030,
     "format": "obfuscated → clean mapping",
-    "notes": "Derived from static analysis of JADX decompiled source (pending initial decompilation)"
+    "notes": "Complete mapping of cu.uci.android.apklis.* entrypoints plus key R8-repackaged defpackage collaborators"
   },
-  "classes": {}
+  "classes": {
+    "cu.uci.android.apklis.data.remote.deserializer.CategoryListDeserializer": {
+      "clean": "cu.uci.android.apklis.data.remote.deserializer.CategoryListDeserializer",
+      "role": "Gson JsonDeserializer parsing Apklis category list payloads",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.di.AppApplication": {
+      "clean": "cu.uci.android.apklis.di.AppApplication",
+      "role": "Application subclass configuring theme mode from app_settings SharedPreferences",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.navigation.AppNavigation": {
+      "clean": "cu.uci.android.apklis.presentation.navigation.AppNavigation",
+      "role": "Navigation router activity handling deep links and screen transitions",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.provider.ApklisLicenseProvider": {
+      "clean": "cu.uci.android.apklis.presentation.provider.ApklisLicenseProvider",
+      "role": "Exported ContentProvider exposing account_data (username, device_id, access_token, code) to third-party apps",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.provider.PaymentProvider": {
+      "clean": "cu.uci.android.apklis.presentation.provider.PaymentProvider",
+      "role": "Exported ContentProvider querying paid-app license status under app/* with payment_cache SharedPreferences",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.receiver.PackageInstallReceiver": {
+      "clean": "cu.uci.android.apklis.presentation.receiver.PackageInstallReceiver",
+      "role": "BroadcastReceiver listening for PACKAGE_ADDED and PACKAGE_REPLACED",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.service.ApkDownloadService": {
+      "clean": "cu.uci.android.apklis.presentation.service.ApkDownloadService",
+      "role": "Foreground dataSync Service downloading APKs with Referer header and launching FileProvider install Intent",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.service.MyAuthenticatorService": {
+      "clean": "cu.uci.android.apklis.presentation.service.MyAuthenticatorService",
+      "role": "Android AccountAuthenticator service bound by AccountManager",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.action.ActionFormActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.action.ActionFormActivity",
+      "role": "Dynamic action form UI for v3/action/{action}/ endpoints",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.detail.AppDetailActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.detail.AppDetailActivity",
+      "role": "App detail screen handling apklis:// and https://www.apklis.cu/application/ deep links, downloads, reviews, and payment QR",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.login.ActivateAccountActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.login.ActivateAccountActivity",
+      "role": "Account activation screen",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.login.OtpForgotPasswordActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.login.OtpForgotPasswordActivity",
+      "role": "OTP password-recovery request screen",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.login.ResetPasswordActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.login.ResetPasswordActivity",
+      "role": "Password reset confirmation screen",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.login.SplashActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.login.SplashActivity",
+      "role": "Launcher splash activity",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.login.WelcomeActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.login.WelcomeActivity",
+      "role": "Login and welcome screen",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.main.MainActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.main.MainActivity",
+      "role": "Main catalog, search, updates, and categories screen",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.notification.NotificationsActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.notification.NotificationsActivity",
+      "role": "User notifications screen",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.onboarding.OnboardingActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.onboarding.OnboardingActivity",
+      "role": "First-run onboarding flow",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.settings.ChangePasswordActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.settings.ChangePasswordActivity",
+      "role": "Account password update screen",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "cu.uci.android.apklis.presentation.ui.settings.SettingsActivity": {
+      "clean": "cu.uci.android.apklis.presentation.ui.settings.SettingsActivity",
+      "role": "App settings screen (theme_mode and legal links)",
+      "status": "reconstructed",
+      "confidence": "high"
+    },
+    "defpackage.wh": {
+      "clean": "cu.uci.android.apklis.data.remote.ApklisApiService",
+      "role": "Retrofit API interface for https://api.apklis.cu/ (v3/* and o/*)",
+      "status": "mapped",
+      "confidence": "high"
+    },
+    "defpackage.j42": {
+      "clean": "cu.uci.android.apklis.data.local.AccountManagerHelper",
+      "role": "AccountManager & account_prefs SharedPreferences helper handling https://api.apklis.cu/o/token/",
+      "status": "mapped",
+      "confidence": "high"
+    },
+    "defpackage.rt3": {
+      "clean": "cu.uci.android.apklis.data.local.UserPreferences",
+      "role": "SharedPreferences wrapper for user_prefs and account_prefs",
+      "status": "mapped",
+      "confidence": "high"
+    },
+    "defpackage.uo1": {
+      "clean": "cu.uci.android.apklis.data.model.LicenseResponse",
+      "role": "Gson DTO for paid-app license and license_group payloads",
+      "status": "mapped",
+      "confidence": "high"
+    }
+  }
 }
