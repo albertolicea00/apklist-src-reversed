@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background_card" android:padding="20.0dp" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dp" android:text="@string/suggest_app_title" />
+    <RadioGroup android:orientation="vertical" android:id="@id/rgSuggestCategory" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dp">
+        <RadioButton android:textColor="@color/text_primary" android:id="@id/rbSuggestApp" android:layout_width="match_parent" android:layout_height="wrap_content" android:checked="true" android:text="@string/suggest_app_type_app" android:layout_weight="1.0" />
+        <RadioButton android:textColor="@color/text_primary" android:id="@id/rbSuggestGame" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/suggest_app_type_game" android:layout_weight="1.0" />
+    </RadioGroup>
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp" app:boxBackgroundMode="outline" style="@style/EditText.Custom">
+        <com.google.android.material.textfield.TextInputEditText android:id="@id/etSuggestName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/suggest_app_name_hint" android:maxLines="1" android:inputType="text" android:imeOptions="actionNext" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp" app:boxBackgroundMode="outline" style="@style/EditText.Custom">
+        <com.google.android.material.textfield.TextInputEditText android:id="@id/etSuggestUrl" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/suggest_app_url_hint" android:maxLines="1" android:inputType="textUri" android:imeOptions="actionNext" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dp" app:boxBackgroundMode="outline" style="@style/EditText.Custom">
+        <com.google.android.material.textfield.TextInputEditText android:gravity="top" android:id="@id/etSuggestDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/suggest_app_reason_hint" android:minLines="3" android:inputType="textMultiLine" android:imeOptions="actionDone" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout android:gravity="end" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <com.google.android.material.button.MaterialButton android:textColor="@color/colorPrimary" android:id="@id/btnSuggestCancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel" app:cornerRadius="20.0dp" style="@style/Widget.MaterialComponents.Button.TextButton" />
+        <com.google.android.material.button.MaterialButton android:textColor="@color/colorPrimary" android:id="@id/btnSuggestSend" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/send" android:layout_marginStart="8.0dp" app:cornerRadius="20.0dp" style="@style/Widget.MaterialComponents.Button.TextButton" />
+    </LinearLayout>
+</LinearLayout>

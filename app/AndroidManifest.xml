@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" package="cu.uci.android.apklis" platformBuildVersionCode="36" platformBuildVersionName="16">
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <permission android:label="Leer datos de cuenta de Apklis" android:name="cu.uci.android.apklis.READ_ACCOUNT_DATA" android:protectionLevel="normal"/>
+    <permission android:name="cu.uci.android.apklis.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+    <uses-permission android:name="cu.uci.android.apklis.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="cu.uci.android.apklis.di.AppApplication" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/Theme.Apklis" android:usesCleartextTraffic="true">
+        <activity android:exported="true" android:name="cu.uci.android.apklis.presentation.ui.login.SplashActivity" android:theme="@style/Theme.Apklis.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name="cu.uci.android.apklis.presentation.ui.login.WelcomeActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <activity android:name="cu.uci.android.apklis.presentation.ui.login.ActivateAccountActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <activity android:name="cu.uci.android.apklis.presentation.ui.login.OtpForgotPasswordActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <activity android:name="cu.uci.android.apklis.presentation.ui.login.ResetPasswordActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <activity android:exported="false" android:name="cu.uci.android.apklis.presentation.ui.main.MainActivity" android:theme="@style/Theme.Apklis.NoActionBar" android:windowSoftInputMode="adjustResize"/>
+        <activity android:exported="false" android:name="cu.uci.android.apklis.presentation.ui.onboarding.OnboardingActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <activity android:exported="true" android:launchMode="singleTop" android:name="cu.uci.android.apklis.presentation.ui.detail.AppDetailActivity" android:theme="@style/Theme.Apklis.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="apklis"/>
+                <data android:host="app"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="apklis"/>
+                <data android:host="license"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="apklis"/>
+                <data android:host="payment"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https"/>
+                <data android:host="www.apklis.cu"/>
+                <data android:pathPrefix="/application/"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="cu.uci.android.apklis.presentation.ui.settings.SettingsActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <activity android:name="cu.uci.android.apklis.presentation.ui.settings.ChangePasswordActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <activity android:exported="false" android:name="cu.uci.android.apklis.presentation.ui.notification.NotificationsActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <receiver android:exported="true" android:name="cu.uci.android.apklis.presentation.receiver.PackageInstallReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="cu.uci.android.apklis.presentation.navigation.AppNavigation" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <activity android:exported="false" android:name="cu.uci.android.apklis.presentation.ui.action.ActionFormActivity" android:theme="@style/Theme.Apklis.NoActionBar"/>
+        <service android:exported="false" android:foregroundServiceType="dataSync" android:name="cu.uci.android.apklis.presentation.service.ApkDownloadService"/>
+        <provider android:authorities="cu.uci.android.apklis.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths"/>
+        </provider>
+        <provider android:authorities="cu.uci.android.apklis.PaymentProvider" android:exported="true" android:name="cu.uci.android.apklis.presentation.provider.PaymentProvider"/>
+        <provider android:authorities="cu.uci.android.apklis.ApklisLicenseProvider" android:exported="true" android:name="cu.uci.android.apklis.presentation.provider.ApklisLicenseProvider"/>
+        <service android:exported="true" android:name="cu.uci.android.apklis.presentation.service.MyAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator"/>
+        </service>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <uses-library android:name="androidx.window.extensions" android:required="false"/>
+        <uses-library android:name="androidx.window.sidecar" android:required="false"/>
+        <provider android:authorities="cu.uci.android.apklis.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+            <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="okhttp3.internal.platform.PlatformInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+        </provider>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

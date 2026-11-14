@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:background="@color/background_dark" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout android:id="@id/appBarLayout" android:background="@color/background_dark" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="wrap_content" app:elevation="0.0dp">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="64.0dp" android:paddingStart="12.0dp" android:paddingEnd="12.0dp">
+            <ImageView android:id="@id/ivAppLogo" android:visibility="visible" android:layout_width="36.0dp" android:layout_height="36.0dp" android:src="@drawable/splash_kiosko" android:scaleType="fitCenter" android:contentDescription="@string/app_name" android:layout_marginStart="4.0dp" />
+            <androidx.compose.ui.platform.ComposeView android:layout_gravity="center_vertical" android:id="@id/cvAppWordmark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6.0dp" />
+            <View android:id="@id/headerSpacer" android:visibility="visible" android:layout_width="0.0dp" android:layout_height="0.0dp" android:layout_weight="1.0" />
+            <com.google.android.material.card.MaterialCardView android:id="@id/headerSearchBar" android:visibility="gone" android:layout_width="0.0dp" android:layout_height="44.0dp" android:layout_weight="1.0" android:layout_marginEnd="8.0dp" app:cardBackgroundColor="@android:color/transparent" app:cardCornerRadius="12.0dp" app:cardElevation="0.0dp" app:strokeColor="@color/search_stroke" app:strokeWidth="1.5dp">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="12.0dp" android:paddingEnd="8.0dp">
+                    <EditText android:textSize="14.0sp" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" android:id="@id/etSearch" android:background="@null" android:layout_width="0.0dp" android:layout_height="wrap_content" android:hint="@string/search_hint" android:maxLines="1" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSearch" />
+                    <ImageView android:id="@id/ivSearchAction" android:background="?selectableItemBackgroundBorderless" android:padding="2.0dp" android:layout_width="20.0dp" android:layout_height="20.0dp" android:src="@drawable/ic_search" app:tint="@color/text_hint" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <FrameLayout android:id="@id/notificationBadgeContainer" android:layout_width="28.0dp" android:layout_height="28.0dp" android:layout_marginStart="4.0dp" android:layout_marginEnd="8.0dp">
+                <ImageView android:id="@id/ivNotifications" android:visibility="visible" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_notifications_outline" android:contentDescription="@string/notifications" app:tint="@color/toolbar_icon_default" />
+                <TextView android:textSize="10.0sp" android:textColor="@android:color/white" android:gravity="center" android:layout_gravity="end|top" android:id="@id/tvNotificationBadge" android:background="@drawable/badge_background" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="16.0dp" android:minHeight="16.0dp" android:importantForAccessibility="yes" />
+            </FrameLayout>
+            <de.hdodenhof.circleimageview.CircleImageView android:layout_gravity="center_vertical" android:id="@id/ivProfile" android:layout_width="40.0dp" android:layout_height="40.0dp" android:src="@drawable/profile" />
+            <ImageView android:id="@id/ivPriceFilter" android:background="@drawable/shape_circle_bg" android:padding="8.0dp" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="40.0dp" android:layout_height="40.0dp" android:src="@drawable/ic_filter_money" android:contentDescription="@string/price_filter" android:layout_marginStart="8.0dp" android:backgroundTint="@color/toolbar_icon_default" />
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView android:id="@id/nestedScrollHome" android:clipToPadding="true" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="65.0dp" android:fillViewport="false" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@id/rvBanners" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="150.0dp" android:layout_marginTop="16.0dp" android:paddingStart="36.0dp" android:paddingEnd="24.0dp" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/rvSections" android:paddingLeft="16.0dp" android:paddingRight="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:nestedScrollingEnabled="false" android:paddingHorizontal="16.0dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <androidx.compose.ui.platform.ComposeView android:id="@id/errorHomeContent" android:background="@color/background_dark" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="60.0dp" app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    <com.facebook.shimmer.ShimmerFrameLayout android:id="@id/shimmerHome" android:paddingTop="8.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="65.0dp" app:layout_behavior="@string/appbar_scrolling_view_behavior" app:shimmer_auto_start="false" app:shimmer_base_alpha="0.35" app:shimmer_duration="1000" app:shimmer_highlight_alpha="1.0" app:shimmer_tilt="18.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="16.0dp" android:paddingEnd="16.0dp">
+            <View android:background="@drawable/bg_shimmer_block_rounded_large" android:layout_width="match_parent" android:layout_height="150.0dp" android:layout_marginTop="12.0dp" />
+            <View android:background="@drawable/bg_shimmer_block_rounded" android:layout_width="140.0dp" android:layout_height="22.0dp" android:layout_marginTop="20.0dp" />
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp">
+                <include layout="@layout/item_shimmer_home_app" />
+                <include layout="@layout/item_shimmer_home_app" />
+                <include layout="@layout/item_shimmer_home_app" />
+            </LinearLayout>
+            <View android:background="@drawable/bg_shimmer_block_rounded" android:layout_width="140.0dp" android:layout_height="22.0dp" android:layout_marginTop="20.0dp" />
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp">
+                <include layout="@layout/item_shimmer_home_app" />
+                <include layout="@layout/item_shimmer_home_app" />
+                <include layout="@layout/item_shimmer_home_app" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/panelUpdates" android:background="@color/background_dark" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="65.0dp" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="20.0dp" android:paddingBottom="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="16.0dp" android:paddingEnd="16.0dp">
+            <ImageView android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_updates" android:layout_marginEnd="10.0dp" app:tint="@color/colorPrimary" />
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:id="@id/tvUpdateCount" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:id="@id/tvTotalSize" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" />
+            </LinearLayout>
+            <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:textColor="@android:color/white" android:id="@id/btnUpdateAll" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dp" android:text="@string/update_all" app:backgroundTint="@color/colorPrimary" app:cornerRadius="18.0dp" />
+        </LinearLayout>
+        <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" />
+        <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/rvUpdates" android:paddingTop="8.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" />
+            <androidx.compose.ui.platform.ComposeView android:id="@id/errorUpdatesContent" android:background="@color/background_dark" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/layoutUpdatesEmpty" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="72.0dp" android:layout_height="72.0dp" android:src="@drawable/ic_updates" android:alpha="0.3" app:tint="@color/text_hint" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/text_secondary" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/no_updates_available" />
+            </LinearLayout>
+            <com.facebook.shimmer.ShimmerFrameLayout android:id="@id/shimmerUpdates" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" app:shimmer_auto_start="false" app:shimmer_base_alpha="0.75" app:shimmer_duration="1100" app:shimmer_highlight_alpha="1.0" app:shimmer_tilt="18.0">
+                <LinearLayout android:orientation="vertical" android:paddingTop="14.0dp" android:paddingBottom="74.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="16.0dp" android:paddingEnd="16.0dp">
+                    <include layout="@layout/item_shimmer_update" />
+                    <include layout="@layout/item_shimmer_update" />
+                    <include layout="@layout/item_shimmer_update" />
+                    <include layout="@layout/item_shimmer_update" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/panelSearch" android:background="@color/background_dark" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="65.0dp" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <androidx.core.widget.NestedScrollView android:id="@id/panelSearchExplorer" android:visibility="visible" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:paddingTop="12.0dp" android:paddingBottom="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:id="@id/tvExplorerGamesTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp" android:text="@string/explore_games" android:layout_marginStart="16.0dp" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/rvExplorerGamesCategories" android:paddingLeft="12.0dp" android:paddingRight="12.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dp" android:nestedScrollingEnabled="false" android:paddingHorizontal="12.0dp" app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" app:spanCount="2" />
+                <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:id="@id/tvExplorerAppsTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp" android:text="@string/explore_apps" android:layout_marginStart="16.0dp" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/rvExplorerAppsCategories" android:paddingLeft="12.0dp" android:paddingRight="12.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dp" android:nestedScrollingEnabled="false" android:paddingHorizontal="12.0dp" app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" app:spanCount="2" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/rvCategoryPicker" android:paddingLeft="12.0dp" android:paddingTop="8.0dp" android:paddingRight="12.0dp" android:paddingBottom="8.0dp" android:visibility="gone" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="12.0dp" android:paddingVertical="8.0dp" app:fastScrollEnabled="false" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        <FrameLayout android:id="@id/flSearchResultsContainer" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/rvSearchResults" android:padding="16.0dp" android:visibility="gone" android:clipToPadding="true" android:layout_width="match_parent" android:layout_height="match_parent" />
+            <com.facebook.shimmer.ShimmerFrameLayout android:id="@id/shimmerSearch" android:padding="16.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" app:shimmer_auto_start="false" app:shimmer_base_alpha="0.35" app:shimmer_duration="1000" app:shimmer_highlight_alpha="1.0" app:shimmer_tilt="18.0">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <include layout="@layout/item_shimmer_grid_row" />
+                    <include layout="@layout/item_shimmer_grid_row" />
+                    <include layout="@layout/item_shimmer_grid_row" />
+                    <include layout="@layout/item_shimmer_grid_row" />
+                    <include layout="@layout/item_shimmer_grid_row" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+            <TextView android:textSize="18.0sp" android:textColor="@color/text_secondary" android:gravity="center|top" android:id="@id/tvSearchEmpty" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="104.0dp" android:text="@string/no_results" />
+            <androidx.compose.ui.platform.ComposeView android:id="@id/errorFilteredContent" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/bottomNavigation" android:background="@color/background_card" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="55.0dp" android:elevation="8.0dp">
+        <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" />
+        <LinearLayout android:orientation="horizontal" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nav_games" android:background="?selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0">
+                <ImageView android:id="@id/nav_games_icon" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_games" android:contentDescription="@string/nav_games" app:tint="@color/text_hint" />
+                <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@id/nav_games_label" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nav_games" android:layout_marginStart="6.0dp" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nav_apps" android:background="?selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0">
+                <ImageView android:id="@id/nav_apps_icon" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_apps" android:contentDescription="@string/nav_apps" app:tint="@color/text_hint" />
+                <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@id/nav_apps_label" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nav_apps" android:layout_marginStart="6.0dp" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nav_updates" android:background="?selectableItemBackground" android:focusable="true" android:clickable="true" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0">
+                <FrameLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/nav_updates_icon" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_updates" android:contentDescription="@string/nav_updates" app:tint="@color/text_hint" />
+                    <TextView android:textSize="10.0sp" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="center" android:layout_gravity="end|top" android:id="@id/tvUpdatesBadge" android:background="@drawable/bg_badge_red" android:paddingTop="2.0dp" android:paddingBottom="2.0dp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-6.0dp" android:minWidth="18.0dp" android:minHeight="18.0dp" android:paddingStart="4.0dp" android:paddingEnd="4.0dp" android:layout_marginEnd="-6.0dp" />
+                </FrameLayout>
+                <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/colorPrimary" android:id="@id/nav_updates_label" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nav_updates" android:layout_marginStart="6.0dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/coordinatorLayout" android:background="@color/background_dark" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout android:background="@color/background_dark" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="wrap_content" app:elevation="0.0dp">
+        <androidx.appcompat.widget.Toolbar android:layout_width="match_parent" android:layout_height="?actionBarSize">
+            <ImageButton android:id="@id/btnBack" android:background="?selectableItemBackgroundBorderless" android:layout_width="48.0dp" android:layout_height="48.0dp" android:src="@drawable/ic_back" app:tint="@color/text_primary" />
+            <ImageButton android:layout_gravity="end" android:id="@id/btnOverflow" android:background="?selectableItemBackgroundBorderless" android:layout_width="48.0dp" android:layout_height="48.0dp" android:src="@drawable/ic_more_vert" android:contentDescription="@string/more_actions" app:tint="@color/toolbar_icon_default" />
+            <ImageButton android:layout_gravity="end" android:id="@id/btnShare" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="48.0dp" android:layout_height="48.0dp" android:src="@drawable/ic_share" android:contentDescription="@string/share_app" app:tint="@color/toolbar_icon_default" />
+            <ImageButton android:layout_gravity="end" android:id="@id/btnWishlist" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="48.0dp" android:layout_height="48.0dp" android:src="@drawable/ic_wishlist_toggle" android:contentDescription="@string/add_to_wishlist" app:tint="@color/toolbar_icon_default" />
+            <ImageButton android:layout_gravity="end" android:id="@id/btnFlag" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="48.0dp" android:layout_height="48.0dp" android:src="@drawable/ic_flag" android:contentDescription="@string/complaint_title" app:tint="@color/toolbar_icon_flag" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@id/swipeRefresh" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <androidx.cardview.widget.CardView android:layout_width="80.0dp" android:layout_height="80.0dp" app:cardCornerRadius="16.0dp" app:cardElevation="0.0dp">
+                        <ImageView android:id="@id/ivAppIcon" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/ic_app_placeholder" android:scaleType="centerCrop" />
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="26.0dp">
+                        <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:id="@id/tvAppName" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        <TextView android:textSize="16.0sp" android:textColor="@color/colorPrimary" android:id="@id/tvDeveloper" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" />
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dp">
+                            <ImageView android:layout_width="18.0dp" android:layout_height="18.0dp" android:src="@drawable/ic_download" android:scaleType="centerInside" app:tint="@color/text_secondary" />
+                            <TextView android:textSize="16.0sp" android:textColor="@color/text_secondary" android:id="@id/tvDownloads" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4.0dp" />
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/layoutSales" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                                <Space android:layout_width="16.0dp" android:layout_height="match_parent" />
+                                <ImageView android:layout_width="18.0dp" android:layout_height="18.0dp" android:src="@drawable/card" android:scaleType="centerInside" app:tint="@color/text_secondary" />
+                                <TextView android:textSize="16.0sp" android:textColor="@color/text_secondary" android:id="@id/tvSales" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4.0dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/tvLastUpdate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton android:textSize="15.0sp" android:textStyle="bold" android:textColor="@android:color/white" android:id="@id/btnDownload" android:layout_width="match_parent" android:layout_height="52.0dp" android:layout_marginTop="20.0dp" android:text="@string/download_install" app:backgroundTint="@color/colorPrimary" app:cornerRadius="10.0dp" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/layoutInstalledActions" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dp">
+                    <com.google.android.material.button.MaterialButton android:textSize="14.0sp" android:textStyle="bold" android:textColor="#e53935" android:id="@id/btnUninstall" android:layout_width="0.0dp" android:layout_height="52.0dp" android:text="@string/uninstall" android:layout_weight="1.0" android:textAllCaps="false" android:layout_marginEnd="8.0dp" app:backgroundTint="@android:color/transparent" app:cornerRadius="10.0dp" app:icon="@drawable/ic_delete" app:iconGravity="textStart" app:iconPadding="4.0dp" app:iconTint="#e53935" app:strokeColor="#e53935" app:strokeWidth="2.0dp" style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                    <com.google.android.material.button.MaterialButton android:textSize="15.0sp" android:textStyle="bold" android:textColor="@android:color/white" android:id="@id/btnOpenApp" android:layout_width="0.0dp" android:layout_height="52.0dp" android:text="@string/open_app" android:layout_weight="1.0" android:textAllCaps="false" android:layout_marginStart="8.0dp" app:backgroundTint="@color/colorPrimary" app:cornerRadius="10.0dp" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dp">
+                    <LinearLayout android:orientation="vertical" android:id="@id/layoutShareOpinionRow" android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rate_this_app" />
+                        <TextView android:textSize="15.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:text="@string/share_opinion_with_others" />
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/llRateStars" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dp">
+                            <ImageView android:id="@id/ivStar1" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="32.0dp" android:src="@drawable/ic_star_outline" android:scaleType="center" android:layout_weight="1.0" android:contentDescription="@string/rating_1" />
+                            <ImageView android:id="@id/ivStar2" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="32.0dp" android:src="@drawable/ic_star_outline" android:scaleType="center" android:layout_weight="1.0" android:contentDescription="@string/rating_2" />
+                            <ImageView android:id="@id/ivStar3" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="32.0dp" android:src="@drawable/ic_star_outline" android:scaleType="center" android:layout_weight="1.0" android:contentDescription="@string/rating_3" />
+                            <ImageView android:id="@id/ivStar4" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="32.0dp" android:src="@drawable/ic_star_outline" android:scaleType="center" android:layout_weight="1.0" android:contentDescription="@string/rating_4" />
+                            <ImageView android:id="@id/ivStar5" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="32.0dp" android:src="@drawable/ic_star_outline" android:scaleType="center" android:layout_weight="1.0" android:contentDescription="@string/rating_5" />
+                        </LinearLayout>
+                        <TextView android:textSize="16.0sp" android:textColor="@color/colorPrimary" android:id="@id/btnWriteReview" android:background="@null" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/write_review" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="vertical" android:id="@id/layoutMyReview" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp">
+                        <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:id="@id/tvMyOpinionTitle" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp" android:text="@string/your_opinion" />
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <de.hdodenhof.circleimageview.CircleImageView android:id="@id/ivMyReviewAvatar" android:layout_width="40.0dp" android:layout_height="40.0dp" android:layout_marginTop="10.0dp" android:layout_marginBottom="4.0dp" android:src="@drawable/ic_person" app:civ_border_width="0.0dp" />
+                            <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="10.0dp">
+                                <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:ellipsize="end" android:id="@id/tvMyReviewUserName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+                                <RatingBar android:id="@id/rbMyReview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:numStars="5" android:stepSize="0.5" android:isIndicator="true" android:progressTint="@color/rating_yellow" android:secondaryProgressTint="@color/rating_yellow" style="?android:ratingBarStyleSmall" />
+                            </LinearLayout>
+                            <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:gravity="center_vertical" android:id="@id/tvMyReviewDate" android:layout_width="wrap_content" android:layout_height="40.0dp" android:layout_marginStart="8.0dp" />
+                            <ImageView android:id="@id/ivMyReviewMenu" android:padding="6.0dp" android:layout_width="40.0dp" android:layout_height="40.0dp" android:src="@drawable/ic_more_vert" android:contentDescription="@string/review_actions" app:tint="@color/text_secondary" />
+                        </LinearLayout>
+                        <TextView android:textSize="15.0sp" android:textColor="@color/text_primary" android:id="@id/tvMyReviewComment" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:lineSpacingMultiplier="1.3" android:layout_marginStart="50.0dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/sectionScreenshots" android:visibility="gone" android:clipChildren="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dp">
+                    <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/screenshots" />
+                    <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@id/rvScreenshots" android:paddingBottom="8.0dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="270.0dp" android:layout_marginTop="12.0dp" android:paddingStart="16.0dp" android:paddingEnd="16.0dp" />
+                </LinearLayout>
+                <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dp" android:text="@string/description" />
+                <FrameLayout android:id="@id/frameDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/text_primary" android:ellipsize="none" android:id="@id/tvDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="3" android:lineSpacingMultiplier="1.4" />
+                    <View android:layout_gravity="bottom" android:id="@id/viewDescFade" android:background="@drawable/fade_description" android:visibility="gone" android:layout_width="match_parent" android:layout_height="32.0dp" />
+                </FrameLayout>
+                <LinearLayout android:gravity="end" android:id="@id/rowExpandDesc" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp">
+                    <ImageView android:id="@id/btnExpandDesc" android:background="@drawable/bg_btn_round_secondary" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_expand_more" android:scaleType="center" android:contentDescription="@string/expand" android:backgroundTint="@color/expand_btn_bg" app:tint="@color/expand_btn_icon" />
+                </LinearLayout>
+                <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dp" android:text="@string/categories_title" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/rvCategories" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:nestedScrollingEnabled="false" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dp">
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/version" />
+                        <TextView android:textSize="13.0sp" android:textColor="@color/text_primary" android:gravity="center_vertical" android:id="@id/tvVersion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:drawablePadding="4.0dp" android:drawableStart="@drawable/ic_android" android:drawableTint="@color/text_secondary" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/size" />
+                        <TextView android:textSize="13.0sp" android:textColor="@color/text_primary" android:gravity="center_vertical" android:id="@id/tvSize" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:drawablePadding="4.0dp" android:drawableStart="@drawable/ic_storage" android:drawableTint="@color/text_secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/sectionInfoExtra" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp">
+                        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                            <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/min_android" />
+                            <TextView android:textSize="13.0sp" android:textColor="@color/text_primary" android:gravity="center_vertical" android:id="@id/tvMinSdk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:drawablePadding="4.0dp" android:drawableStart="@drawable/ic_android" android:drawableTint="@color/text_secondary" />
+                        </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                            <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/architecture" />
+                            <TextView android:textSize="13.0sp" android:textColor="@color/text_primary" android:gravity="center_vertical" android:id="@id/tvArchitecture" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:drawablePadding="4.0dp" android:drawableStart="@drawable/ic_settings_chip" android:drawableTint="@color/text_secondary" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/changelog" />
+                    <TextView android:textSize="13.0sp" android:textColor="@color/text_primary" android:id="@id/tvChangelog" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:lineSpacingMultiplier="1.3" />
+                    <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/permissions" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/text_primary" android:id="@id/tvPermissions" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:lineSpacingMultiplier="1.6" />
+                </LinearLayout>
+                <LinearLayout android:gravity="end" android:id="@id/rowExpandInfo" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp">
+                    <ImageView android:id="@id/btnExpandInfo" android:background="@drawable/bg_btn_round_secondary" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_expand_more" android:scaleType="center" android:contentDescription="@string/expand" android:backgroundTint="@color/expand_btn_bg" app:tint="@color/expand_btn_icon" />
+                </LinearLayout>
+                <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dp" android:text="@string/reviews" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp">
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="16.0dp">
+                        <TextView android:textSize="44.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:id="@id/tvRating" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        <RatingBar android:id="@id/ratingBar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:numStars="5" android:stepSize="0.1" android:isIndicator="true" android:progressTint="@color/rating_yellow" android:secondaryProgressTint="@color/rating_yellow" style="?android:ratingBarStyleSmall" />
+                        <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/tvReviewCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" />
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp">
+                            <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:layout_width="12.0dp" android:layout_height="wrap_content" android:text="5" />
+                            <ProgressBar android:id="@id/pbStar5" android:layout_width="0.0dp" android:layout_height="7.0dp" android:progressDrawable="@drawable/rating_progress_bar" android:layout_weight="1.0" android:layout_marginStart="6.0dp" style="?android:progressBarStyleHorizontal" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp">
+                            <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:layout_width="12.0dp" android:layout_height="wrap_content" android:text="4" />
+                            <ProgressBar android:id="@id/pbStar4" android:layout_width="0.0dp" android:layout_height="7.0dp" android:progressDrawable="@drawable/rating_progress_bar" android:layout_weight="1.0" android:layout_marginStart="6.0dp" style="?android:progressBarStyleHorizontal" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp">
+                            <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:layout_width="12.0dp" android:layout_height="wrap_content" android:text="3" />
+                            <ProgressBar android:id="@id/pbStar3" android:layout_width="0.0dp" android:layout_height="7.0dp" android:progressDrawable="@drawable/rating_progress_bar" android:layout_weight="1.0" android:layout_marginStart="6.0dp" style="?android:progressBarStyleHorizontal" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp">
+                            <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:layout_width="12.0dp" android:layout_height="wrap_content" android:text="2" />
+                            <ProgressBar android:id="@id/pbStar2" android:layout_width="0.0dp" android:layout_height="7.0dp" android:progressDrawable="@drawable/rating_progress_bar" android:layout_weight="1.0" android:layout_marginStart="6.0dp" style="?android:progressBarStyleHorizontal" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:layout_width="12.0dp" android:layout_height="wrap_content" android:text="1" />
+                            <ProgressBar android:id="@id/pbStar1" android:layout_width="0.0dp" android:layout_height="7.0dp" android:progressDrawable="@drawable/rating_progress_bar" android:layout_weight="1.0" android:layout_marginStart="6.0dp" style="?android:progressBarStyleHorizontal" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/progressBarReviews" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/rvReviews" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:nestedScrollingEnabled="false" />
+                <LinearLayout android:gravity="end" android:id="@id/rowMoreReviews" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp">
+                    <ImageView android:id="@id/btnMoreReviews" android:background="@drawable/bg_btn_round_secondary" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_expand_more" android:scaleType="center" android:contentDescription="@string/expand" android:backgroundTint="@color/expand_btn_bg" app:tint="@color/expand_btn_icon" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="24.0dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <ProgressBar android:layout_gravity="center" android:id="@id/progressBar" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
