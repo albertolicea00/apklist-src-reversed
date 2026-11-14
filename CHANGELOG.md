@@ -12,3 +12,4 @@
 - Reconstructed all 20 top-level entrypoint classes under `app/src/main/java/cu/uci/android/apklis/` and mapped them alongside key R8-repackaged `defpackage` collaborators (`wh`, `j42`, `rt3`, `uo1`) in `mappings/classes.json`.
 - Completed static analysis across `docs/architecture.md`, `docs/installer.md`, `docs/payments.md`, `docs/networking.md`, `docs/security.md`, `docs/storage.md`, `docs/domain-model.md`, `docs/unmapped-source-review.md`, `docs/java-compilation.md`, `docs/runtime-validation.md`, and `docs/versioning.md`.
 - Tagged baseline release `2.0.1.202609030-v1.0`.
+- Updated `scripts/update-progress.py` to combine `TODO.md` task completion (31/34, 91%) with `scripts/mapping-stats.sh` main-package exact source links (20/22, 90%) into the `README.md` overall progress bar (90%), and updated `README.md` with observed `make stats` counts (`source_files: 22`, `clean_files: 20`, `single_candidate: 20`, `unlinked: 2`, `mapping_issues: 8`).

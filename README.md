@@ -6,12 +6,12 @@
 ![Target SDK](https://img.shields.io/badge/Target%20SDK-36-green?style=flat-square)
 ![Last Update](https://img.shields.io/badge/Last%20Update-November%202026-lightgrey?style=flat-square)
 
-<!-- 50 blocks; each full block = 2% of TODO tasks --> <!-- do not delete this progress-bar-->
-<span style="white-space: nowrap;"><code>[█████████████████████████████████████████████░░░░░] 91%</code></span>
+<!-- 50 blocks; each full block = 2% (average of TODO tasks and source reconstruction) --> <!-- do not delete this progress-bar-->
+<span style="white-space: nowrap;"><code>[█████████████████████████████████████████████░░░░░] 90%</code></span>
 
-**Task-list progress: 31/34 completed; 3 pending.** Tasks have equal weight. This is not verified code coverage or a working-app percentage. The value can fall when scope grows. Run `make progress` or `make inventory` to refresh it from [TODO.md](TODO.md).
+**Task-list progress: 31/34 completed (91%); 3 pending. Source reconstruction: 20/22 exact source links (90%).** Tasks have equal weight; overall bar averages task-list progress and exact main-package source links. This is not verified code coverage or a working-app percentage. Run `make progress` or `make inventory` to refresh it from [TODO.md](TODO.md) and `scripts/mapping-stats.sh`.
 
-**Main-package exact source links: 0/0 (0% — pre-decompilation).** This counts original Java classes with one exact clean-source candidate; it does not verify implementation completeness. The [reconstruction inventory](docs/reconstruction-inventory.md) reports current counts, and the [unlinked-source review ledger](docs/unmapped-source-review.md) tracks per-source classifications once `make decompile` has been executed.
+**Main-package exact source links: 20/22 (90% — 20 clean files, 2 unlinked, 8 mapping issues).** This counts original Java classes with one exact clean-source candidate; it does not verify implementation completeness. The [reconstruction inventory](docs/reconstruction-inventory.md) reports current counts, and the [unlinked-source review ledger](docs/unmapped-source-review.md) tracks per-source classifications.
 
 ## Overview
 
