@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "package": "cu.uci.android.apklis",
+    "apk_version": "2.0.1",
+    "version_code": 202609030,
+    "format": "obfuscated → clean mapping",
+    "notes": "Derived from static analysis of JADX decompiled source (pending initial decompilation)"
+  },
+  "classes": {}
+}

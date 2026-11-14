@@ -1,0 +1,22 @@
+# Repository guide
+- Goal: reverse engineer the Apklis Android client (`cu.uci.android.apklis`) developed by UCI for interoperability, protocol analysis, package installer verification, and security research.
+- Structure: `app/` holds clean reconstructed source and resources; `src/` holds tracked raw JADX output (obfuscated); `mappings/` holds obfuscated-to-clean name mappings; `smali/` holds local, Git-ignored disassembly; `scripts/` holds tooling; `docs/` holds topic-specific notes.
+- `.workspace/bin/` holds local APK inputs; `.workspace/archives/` holds local versioned smali ZIPs; `.workspace/handoff.md` is a temporary, versioned pause/resume note; `README.md` shows the current target metadata and official references; `CHANGELOG.md` tracks substantive project changes.
+- `docs/target-metadata.md`: how to extract package, version, SDK levels, and SHA-256 from an APK.
+- `docs/versioning.md`: `<APK versionName>.<versionCode>-v<internal version>` release/tag scheme, local smali archives, and cross-version diffing.
+- `docs/architecture.md`: manifest components, foreground sync services, `AccountManager` authenticator, permissions, dependencies, and obfuscation.
+- `docs/installer.md`: background APK download manager, `QUERY_ALL_PACKAGES` update detection, SHA-256 verification, and `PackageInstaller` session flows.
+- `docs/payments.md`: paid application purchase workflow, Transfermóvil / payment gateway integration, and license verification.
+- `docs/networking.md`: HTTP stack, OAuth2 interceptors, `*.apklis.cu` REST API endpoints, and TLS configuration.
+- `docs/security.md`: high-privilege permission audit (`REQUEST_INSTALL_PACKAGES`, `MANAGE_EXTERNAL_STORAGE`), component exposure, and credential handling.
+- `docs/storage.md`: local Room/SQLite schema, DataStore/SharedPreferences, and downloaded APK cache layout.
+- `docs/domain-model.md`: entity catalog (applications, releases, reviews, user accounts, purchases, download tasks) and enum mappings.
+- `docs/reconstruction-inventory.md`: reproducible source-to-clean review queue, duplicate candidates, mapping conflicts, and coverage limits.
+- `docs/unmapped-source-review.md`: per-class classification ledger for unlinked main-package sources; records application behavior, generated/library/support code, role, and evidence.
+- `docs/java-compilation.md`: reproducible dependency-backed Java compiler audit and limits of APK-derived classpaths.
+- `docs/runtime-validation.md`: local hybrid-APK build and isolated emulator observations, scope, and outstanding runtime checks.
+- `.workspace/handoff.md`: current pause/resume handoff; update it when stopping work and remove it when work resumes.
+- `mappings/classes.json`: obfuscated → clean class/field/enum name mappings with roles and confidence.
+- Keep detailed procedures in separate `docs/*.md` files and add a one-line summary and link here for each new document.
+- Read only the documentation relevant to the current task.
+- Update `CHANGELOG.md` for every completed change; put the date, APK filename, and SHA-256 in each analysis session's `##` heading.
