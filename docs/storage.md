@@ -1,12 +1,17 @@
-# Local Storage
+# Local Storage & Persistence
 
-Target: `cu.uci.android.apklis` v2.0.1 (versionCode `202609030`).
+Analysis of local persistence in `cu.uci.android.apklis`.
 
-> [!NOTE]
-> **Status:** Structural template (pending decompilation). Document Room/SQLite schemas, migrations, DataStore/SharedPreferences, and APK download cache once decompiled.
+## SharedPreferences Files
 
-## Pending Analysis Sections
+| Preference Name | Component | Contents |
+|---|---|---|
+| `account_prefs` | `AccountManagerHelper` (`defpackage.j42`), `UserPreferences` (`defpackage.rt3`) | Fallback account metadata (`username`, tokens) when `AccountManager` is empty |
+| `user_prefs` | `UserPreferences` (`defpackage.rt3`) | User session and profile preferences |
+| `payment_cache` | `PaymentProvider` | Cached paid-app flags (`cached_paid_<packageName>`) |
+| `app_settings` | `AppApplication`, `SettingsActivity` | UI theme (`theme_mode`: `"system"`, etc.) |
 
-- **Database Engine & ORM:** Room, SQLiteOpenHelper, or DataStore configuration, database filenames, and schema version numbers.
-- **Tables & Entities:** Download tasks, cached app metadata, installed app state, and user preferences.
-- **External Storage Cache (`MANAGE_EXTERNAL_STORAGE`):** Directory paths for downloaded `.apk` files and cleanup lifecycle.
+## AccountManager & FileProvider
+
+- **Android `AccountManager`**: Primary credential/token store managed via `MyAuthenticatorService` (`res/xml/authenticator.xml`).
+- **APK Cache**: Downloaded APK files are stored under paths configured in `res/xml/file_provider_paths.xml` and shared with the system package installer via `cu.uci.android.apklis.fileprovider`.
