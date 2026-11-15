@@ -96,8 +96,8 @@ public final class PaymentProvider extends ContentProvider {
         String str3 = i42VarE != null ? i42VarE.a : "";
         Log.d("PaymentProvider", "Checking payment for package: ".concat(lastPathSegment));
         Log.d("PaymentProvider", "Using username: ".concat(str3));
-        ?? BooleanValue = sharedPreferences.getBoolean("cached_paid_".concat(lastPathSegment), false);
-        Log.d("PaymentProvider", "Cached payment status: " + ((boolean) BooleanValue));
+        boolean booleanValue = sharedPreferences.getBoolean("cached_paid_".concat(lastPathSegment), false);
+        Log.d("PaymentProvider", "Cached payment status: " + booleanValue);
         Future futureSubmit = this.e.submit(new vt1(lastPathSegment, sharedPreferences));
         try {
             bool = (Boolean) futureSubmit.get(5L, TimeUnit.SECONDS);
@@ -108,10 +108,10 @@ public final class PaymentProvider extends ContentProvider {
             Log.e("PaymentProvider", "Error getting API call result", e2);
         }
         if (bool != null) {
-            BooleanValue = bool.booleanValue();
+            booleanValue = bool.booleanValue();
         }
-        Log.d("PaymentProvider", "Final payment status: " + ((boolean) BooleanValue) + " (from " + (bool != null ? "API" : "cache") + ")");
-        matrixCursor.addRow(new Object[]{Integer.valueOf((int) BooleanValue), str3});
+        Log.d("PaymentProvider", "Final payment status: " + booleanValue + " (from " + (bool != null ? "API" : "cache") + ")");
+        matrixCursor.addRow(new Object[]{Integer.valueOf(booleanValue ? 1 : 0), str3});
         return matrixCursor;
     }
 

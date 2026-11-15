@@ -225,9 +225,8 @@ public final class AppDetailActivity extends vi {
         for (Object obj : listX) {
             int i4 = i3 + 1;
             if (i3 < 0) {
-                ?? r16 = str;
                 me1.i0();
-                throw r16;
+                throw null;
             }
             ((ImageView) obj).setOnClickListener(new View.OnClickListener() { // from class: wl
                 @Override // android.view.View.OnClickListener

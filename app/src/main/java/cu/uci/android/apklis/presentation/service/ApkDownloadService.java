@@ -412,351 +412,99 @@ public final class ApkDownloadService extends Service {
     /* JADX WARN: Type inference failed for: r4v9 */
     /* JADX WARN: Type inference failed for: r5v16, types: [java.lang.StringBuilder] */
     /* JADX WARN: Type inference failed for: r5v5, types: [java.io.InputStream] */
-    /* JADX WARN: Type inference failed for: r5v6 */
-    /* JADX WARN: Type inference failed for: r5v7, types: [java.io.InputStream] */
-    /* JADX WARN: Type inference failed for: r5v8, types: [long] */
-    /* JADX WARN: Type inference failed for: r8v9, types: [long] */
     public final q62 d(u92 u92Var, String str, n31 n31Var, long j, ci ciVar, String str2, String str3, int i) {
-        Throwable th;
-        ?? r41;
-        eu2 eu2Var;
-        Throwable th2;
-        ?? r42;
-        ?? r40;
-        Throwable th3;
-        ?? r43;
-        ?? r39;
-        int i2;
-        String str4;
-        long j2;
-        int iMin;
-        long j3;
-        ?? r0 = j;
-        ciVar = ciVar;
+        long offset = j;
         hi hiVar = hi.h;
         we weVar = new we(9);
         weVar.v(str);
         ((se) weVar.h).d("User-Agent", "ApklisApp/1.0 (Android)");
         ((se) weVar.h).d("Referer", "https://www.apklis.cu/");
-        if (r0 > 0) {
-            ((se) weVar.h).d("Range", "bytes=" + r0 + "-");
+        if (offset > 0) {
+            ((se) weVar.h).d("Range", "bytes=" + offset + "-");
         }
         int i3 = 4;
-        try {
-            try {
-                n31Var = new do2(u92Var, new wj(weVar), false).h();
-                try {
-                    int i4 = n31Var.h;
-                    try {
-                        if (200 > i4 || i4 >= 300 || (eu2Var = n31Var.k) == null) {
-                            Log.e("ApkDownloadService", "Fallo HTTP " + i4 + " para " + str3);
-                            q62 q62Var = new q62(i3, hiVar);
-                            n31Var.close();
-                            return q62Var;
-                        }
-                        if (r0 <= 0 || i4 != 200) {
-                            long jB = eu2Var.b();
-                            long j4 = jB > 0 ? jB + r0 : -1L;
-                            int iG = g(r0, j4);
-                            long jCurrentTimeMillis = System.currentTimeMillis();
-                            int iMax = Math.max(1, iG);
-                            try {
-                                eu2 eu2Var2 = n31Var.k;
-                                eu2Var2.getClass();
-                                j = eu2Var2.g().E();
-                                try {
-                                    ?? C = n31Var.C(r0 > 0);
-                                    try {
-                                        try {
-                                            byte[] bArr = new byte[16384];
-                                            boolean z2 = false;
-                                            long j5 = 0;
-                                            long j6 = 0;
-                                            long j7 = -1;
-                                            while (true) {
-                                                int i5 = j.read(bArr);
-                                                ?? r28 = n31Var;
-                                                if (i5 == -1) {
-                                                    ?? r44 = j;
-                                                    int i6 = 4;
-                                                    C.close();
-                                                    r44.close();
-                                                    q62 q62Var2 = new q62(i6, hi.e);
-                                                    r28.close();
-                                                    return q62Var2;
-                                                }
-                                                try {
-                                                    try {
-                                                        try {
-                                                            if (ciVar.d || Thread.currentThread().isInterrupted()) {
-                                                                ?? r45 = C;
-                                                                ?? r46 = j;
-                                                                q62 q62Var3 = new q62(4, hi.i);
-                                                                r45.close();
-                                                                r46.close();
-                                                                r28.close();
-                                                                return q62Var3;
-                                                            }
-                                                            if (ciVar.c) {
-                                                                ?? r3 = C;
-                                                                try {
-                                                                    r43 = r3;
-                                                                    r39 = j;
-                                                                    i2 = 4;
-                                                                    ciVar = 4;
-                                                                    ciVar = 4;
-                                                                    ciVar = 4;
-                                                                    try {
-                                                                        p(str2, str3, i, g(r0, j4), r0, j4, -1L, true, false);
-                                                                        q62 q62Var4 = new q62(i2, hi.f);
-                                                                        try {
-                                                                            r43.close();
-                                                                            try {
-                                                                                r39.close();
-                                                                                try {
-                                                                                    r28.close();
-                                                                                    return q62Var4;
-                                                                                } catch (IOException e) {
-                                                                                    e = e;
-                                                                                    str3 = str3;
-                                                                                    Log.w("ApkDownloadService", "Error de red en descarga de " + str3 + ": " + e.getMessage());
-                                                                                    return new q62((int) ciVar, hiVar);
-                                                                                }
-                                                                            } catch (Throwable th4) {
-                                                                                str3 = str3;
-                                                                                th = th4;
-                                                                                r41 = r28;
-                                                                                throw th;
-                                                                            }
-                                                                        } catch (Throwable th5) {
-                                                                            r42 = r39;
-                                                                            str3 = str3;
-                                                                            th2 = th5;
-                                                                            n31Var = r28;
-                                                                            try {
-                                                                                throw th2;
-                                                                            } catch (Throwable th6) {
-                                                                                p31.l(r42, th2);
-                                                                                throw th6;
-                                                                            }
-                                                                        }
-                                                                    } catch (Throwable th7) {
-                                                                        th = th7;
-                                                                        j = r39;
-                                                                        str3 = str3;
-                                                                        th3 = th;
-                                                                        n31Var = r28;
-                                                                        ciVar = i2;
-                                                                        r40 = r43;
-                                                                        throw th3;
-                                                                    }
-                                                                } catch (Throwable th8) {
-                                                                    th = th8;
-                                                                    r43 = r3;
-                                                                    r39 = j;
-                                                                    i2 = 4;
-                                                                }
-                                                            } else {
-                                                                str = C;
-                                                                long j8 = j4;
-                                                                ciVar = 4;
-                                                                ciVar = 4;
-                                                                ciVar = 4;
-                                                                ciVar = 4;
-                                                                ?? r36 = r0;
-                                                                ?? r1 = j;
-                                                                byte[] bArr2 = bArr;
-                                                                try {
-                                                                    if (!j()) {
-                                                                        str4 = str3;
-                                                                        j = r1;
-                                                                        n31Var = r28;
-                                                                        p(str2, str4, i, g(r36, j8), r36, j8, -1L, true, true);
-                                                                        q62 q62Var5 = new q62((int) ciVar, hi.g);
-                                                                        str.close();
-                                                                        j.close();
-                                                                        n31Var.close();
-                                                                        return q62Var5;
-                                                                    }
-                                                                    j = r1;
-                                                                    n31Var = r28;
-                                                                    str3 = str3;
-                                                                    try {
-                                                                        str.write(bArr2, 0, i5);
-                                                                        long j9 = i5;
-                                                                        long j10 = r36 + j9;
-                                                                        long j11 = j6 + j9;
-                                                                        long jCurrentTimeMillis2 = System.currentTimeMillis();
-                                                                        long j12 = jCurrentTimeMillis2 - jCurrentTimeMillis;
-                                                                        if (j12 >= 400) {
-                                                                            if (j12 > 0) {
-                                                                                try {
-                                                                                    j3 = (j11 * 1000) / j12;
-                                                                                } catch (Throwable th9) {
-                                                                                    th3 = th9;
-                                                                                    r40 = str;
-                                                                                    n31Var = n31Var;
-                                                                                    j = j;
-                                                                                }
-                                                                            } else {
-                                                                                j3 = -1;
-                                                                            }
-                                                                            j7 = j3;
-                                                                            jCurrentTimeMillis = jCurrentTimeMillis2;
-                                                                            j2 = 0;
-                                                                        } else {
-                                                                            jCurrentTimeMillis = jCurrentTimeMillis;
-                                                                            j7 = j7;
-                                                                            j2 = j11;
-                                                                        }
-                                                                        if (j8 > 0) {
-                                                                            iMin = (int) ((100 * j10) / j8);
-                                                                            iMax = iMax;
-                                                                        } else {
-                                                                            iMin = Math.min(98, iMax + 1);
-                                                                            iMax = iMin;
-                                                                        }
-                                                                        boolean z3 = !z2 || iMin != iG || jCurrentTimeMillis2 - j5 >= 220 || iMin >= 100;
-                                                                        Long l = (Long) this.j.get(str3);
-                                                                        if (l == null || jCurrentTimeMillis2 - l.longValue() >= 700) {
-                                                                            this.j.put(str3, Long.valueOf(jCurrentTimeMillis2));
-                                                                        }
-                                                                        if (z3) {
-                                                                            str4 = str3;
-                                                                            str = str;
-                                                                            int i7 = iMin;
-                                                                            try {
-                                                                                p(str2, str4, i, i7, j10, j8, j7, false, false);
-                                                                                str3 = str4;
-                                                                                j6 = j2;
-                                                                                iG = i7;
-                                                                                r0 = j10;
-                                                                                j4 = j8;
-                                                                                z2 = true;
-                                                                                bArr = bArr2;
-                                                                                j5 = jCurrentTimeMillis2;
-                                                                                C = str;
-                                                                            } catch (Throwable th10) {
-                                                                                th = th10;
-                                                                                str3 = str4;
-                                                                            }
-                                                                        } else {
-                                                                            str = str;
-                                                                            bArr = bArr2;
-                                                                            r0 = j10;
-                                                                            j6 = j2;
-                                                                            C = str;
-                                                                            j4 = j8;
-                                                                        }
-                                                                    } catch (Throwable th11) {
-                                                                        th = th11;
-                                                                        str = str;
-                                                                        th3 = th;
-                                                                        ciVar = ciVar;
-                                                                        r40 = str;
-                                                                        n31Var = n31Var;
-                                                                        j = j;
-                                                                    }
-                                                                    th = th10;
-                                                                    str3 = str4;
-                                                                } catch (Throwable th12) {
-                                                                    th = th12;
-                                                                    j = r1;
-                                                                    n31Var = r28;
-                                                                    str3 = str3;
-                                                                }
-                                                            }
-                                                            throw th3;
-                                                            throw th3;
-                                                        } catch (Throwable th13) {
-                                                            p31.l(r40, th3);
-                                                            throw th13;
-                                                        }
-                                                    } catch (Throwable th14) {
-                                                        th = th14;
-                                                    }
-                                                } catch (Throwable th15) {
-                                                    th = th15;
-                                                    str = C;
-                                                    j = j;
-                                                    n31Var = r28;
-                                                    ciVar = 4;
-                                                }
-                                                th3 = th;
-                                                ciVar = ciVar;
-                                                r40 = str;
-                                                n31Var = n31Var;
-                                                j = j;
-                                            }
-                                        } catch (Throwable th16) {
-                                            th = th16;
-                                            n31Var = n31Var;
-                                            str = C;
-                                            j = j;
-                                        }
-                                    } catch (Throwable th17) {
-                                        th = th17;
-                                        th2 = th;
-                                        ciVar = ciVar;
-                                        n31Var = n31Var;
-                                        r42 = j;
-                                        throw th2;
-                                    }
-                                } catch (Throwable th18) {
-                                    th = th18;
-                                    str3 = str3;
-                                    n31Var = n31Var;
-                                    j = j;
-                                    ciVar = 4;
-                                }
-                            } catch (Throwable th19) {
-                                th = th19;
-                                str3 = str3;
-                                n31Var = n31Var;
-                                ciVar = 4;
-                                th = th;
-                                ciVar = ciVar;
-                                r41 = n31Var;
-                            }
-                        } else {
-                            try {
-                                n31Var.p();
-                                q62 q62Var6 = new q62(i3, hiVar);
-                                n31Var.close();
-                                return q62Var6;
-                            } catch (Throwable th20) {
-                                str3 = str3;
-                                th = th20;
-                                r41 = n31Var;
-                                ciVar = 4;
-                            }
-                        }
-                        try {
-                            throw th;
-                        } catch (Throwable th21) {
-                            p31.l(r41, th);
-                            throw th21;
-                        }
-                    } catch (Throwable th22) {
-                        th = th22;
-                        th = th;
-                        ciVar = ciVar;
-                        r41 = n31Var;
-                        throw th;
-                    }
-                } catch (Throwable th23) {
-                    th = th23;
-                    str3 = str3;
-                    n31Var = n31Var;
-                    ciVar = 4;
-                }
-            } catch (IOException e2) {
-                e = e2;
+        try (var response = new do2(u92Var, new wj(weVar), false).h()) {
+            int i4 = response.h;
+            eu2 eu2Var = response.k;
+            if (200 > i4 || i4 >= 300 || eu2Var == null) {
+                Log.e("ApkDownloadService", "Fallo HTTP " + i4 + " para " + str3);
+                return new q62(i3, hiVar);
             }
-        } catch (IOException e3) {
-            e = e3;
-            str3 = str3;
-            ciVar = 4;
+            if (offset > 0 && i4 == 200) {
+                n31Var.p();
+                return new q62(i3, hiVar);
+            }
+            long jB = eu2Var.b();
+            long total = jB > 0 ? jB + offset : -1L;
+            int iG = g(offset, total);
+            long jCurrentTimeMillis = System.currentTimeMillis();
+            int iMax = Math.max(1, iG);
+            eu2 eu2Var2 = response.k;
+            eu2Var2.getClass();
+            try (var input = eu2Var2.g().E(); var output = n31Var.C(offset > 0)) {
+                byte[] bArr = new byte[16384];
+                boolean z2 = false;
+                long j5 = 0;
+                long j6 = 0;
+                long j7 = -1;
+                while (true) {
+                    int i5 = input.read(bArr);
+                    if (i5 == -1) {
+                        return new q62(i3, hi.e);
+                    }
+                    if (ciVar.d || Thread.currentThread().isInterrupted()) {
+                        return new q62(i3, hi.i);
+                    }
+                    if (ciVar.c) {
+                        p(str2, str3, i, g(offset, total), offset, total, -1L, true, false);
+                        return new q62(i3, hi.f);
+                    }
+                    if (!j()) {
+                        p(str2, str3, i, g(offset, total), offset, total, -1L, true, true);
+                        return new q62(i3, hi.g);
+                    }
+                    output.write(bArr, 0, i5);
+                    long j9 = i5;
+                    long j10 = offset + j9;
+                    long j11 = j6 + j9;
+                    long jCurrentTimeMillis2 = System.currentTimeMillis();
+                    long j12 = jCurrentTimeMillis2 - jCurrentTimeMillis;
+                    long j2;
+                    if (j12 >= 400) {
+                        j7 = j12 > 0 ? (j11 * 1000) / j12 : -1L;
+                        jCurrentTimeMillis = jCurrentTimeMillis2;
+                        j2 = 0;
+                    } else {
+                        j2 = j11;
+                    }
+                    int iMin;
+                    if (total > 0) {
+                        iMin = (int) ((100 * j10) / total);
+                    } else {
+                        iMin = Math.min(98, iMax + 1);
+                        iMax = iMin;
+                    }
+                    boolean z3 = !z2 || iMin != iG || jCurrentTimeMillis2 - j5 >= 220 || iMin >= 100;
+                    Long l = (Long) this.j.get(str3);
+                    if (l == null || jCurrentTimeMillis2 - l.longValue() >= 700) {
+                        this.j.put(str3, Long.valueOf(jCurrentTimeMillis2));
+                    }
+                    if (z3) {
+                        p(str2, str3, i, iMin, j10, total, j7, false, false);
+                        j6 = j2;
+                        iG = iMin;
+                        offset = j10;
+                        z2 = true;
+                        j5 = jCurrentTimeMillis2;
+                    } else {
+                        offset = j10;
+                        j6 = j2;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            Log.w("ApkDownloadService", "Error de red en descarga de " + str3 + ": " + e.getMessage());
+            return new q62(i3, hiVar);
         }
     }
 
