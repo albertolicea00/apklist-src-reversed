@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-15 — cu.uci.android.apklis-v202609030.apk — SHA-256: `4d23c1a911ed4a9b53762ab44fe8f6371a58a32072c055c26444b9de25ace305`
+
+- Copied JADX `defpackage` collaborator sources (`src/defpackage/{j42,rt3,uo1,wh}.java`) and reconstructed their 4 clean Java classes under `app/src/main/java/cu/uci/android/apklis/data/` (`AccountManagerHelper`, `UserPreferences`, `LicenseResponse`, `ApklisApiService`).
+- Updated `mappings/classes.json` status for `defpackage.{j42,rt3,uo1,wh}` to `reconstructed`, resolving all 8 `mapping_issues` (`mapping_issues: 0`).
+- Verified the 2 unlinked files in `src/` (`R.java` and `MainActivity$setupAdapters$expandGridLM$1$1.java`, no `BuildConfig.java`) in `docs/unmapped-source-review.md`.
+- Regenerated `README.md` progress via `make inventory && make progress` (`source_files: 26`, `clean_files: 24`, `single_candidate: 24`, `unlinked: 2`, `mapping_issues: 0`; Task-list progress 91%, Source reconstruction 92%).
+
 ## 2026-11-14 — cu.uci.android.apklis-v202609030.apk — SHA-256: `4d23c1a911ed4a9b53762ab44fe8f6371a58a32072c055c26444b9de25ace305`
 
 - Initialized the Apklis (`cu.uci.android.apklis`) reverse-engineering repository structure (`app/assets/`, `app/res/`, `app/src/main/java/`, `src/`, `smali/`, `mappings/evidence/`, `scripts/tests/`, `docs/`, `.workspace/bin/`, `.workspace/archives/`) mirroring `transfermovil-src-reversed` prior to decompilation.
