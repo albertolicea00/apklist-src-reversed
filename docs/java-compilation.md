@@ -16,4 +16,4 @@ Static compilation notes for `cu.uci.android.apklis` (`2.0.1`, `versionCode` `20
   - `app/src/main/java/cu/uci/android/apklis/presentation/service/ApkDownloadService.java`: 42 errors (14 `??` sites in `d(...)`, lines 421–567, alongside JADX variable-reuse artifacts).
   - `app/src/main/java/cu/uci/android/apklis/presentation/provider/PaymentProvider.java`: 3 errors (1 `??` site at line 99: `?? BooleanValue = sharedPreferences.getBoolean(...)`).
   - `app/src/main/java/cu/uci/android/apklis/presentation/ui/detail/AppDetailActivity.java`: 3 errors (1 `??` site at line 228: `?? r16 = str;`).
-- Because `javac` halted on parse errors in those 3 files, type/symbol attribution across the remaining 21 clean files has not yet completed.
+- **After fixing JADX `??` parse artifacts**: Re-running `make compile-audit` passed the parse phase across all 24 clean files and reached type/symbol attribution (`3,165` errors in `24` files), dominated by synthetic `import defpackage.*;` imports that do not exist in `.workspace/tools/target-bytecode.jar` (where R8 root-package classes live in the unnamed/default package rather than `defpackage`).
