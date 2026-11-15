@@ -130,25 +130,25 @@
     "defpackage.wh": {
       "clean": "cu.uci.android.apklis.data.remote.ApklisApiService",
       "role": "Retrofit API interface for https://api.apklis.cu/ (v3/* and o/*)",
-      "status": "mapped",
+      "status": "reconstructed",
       "confidence": "high"
     },
     "defpackage.j42": {
       "clean": "cu.uci.android.apklis.data.local.AccountManagerHelper",
       "role": "AccountManager & account_prefs SharedPreferences helper handling https://api.apklis.cu/o/token/",
-      "status": "mapped",
+      "status": "reconstructed",
       "confidence": "high"
     },
     "defpackage.rt3": {
       "clean": "cu.uci.android.apklis.data.local.UserPreferences",
       "role": "SharedPreferences wrapper for user_prefs and account_prefs",
-      "status": "mapped",
+      "status": "reconstructed",
       "confidence": "high"
     },
     "defpackage.uo1": {
       "clean": "cu.uci.android.apklis.data.model.LicenseResponse",
       "role": "Gson DTO for paid-app license and license_group payloads",
-      "status": "mapped",
+      "status": "reconstructed",
       "confidence": "high"
     }
   }
