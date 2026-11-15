@@ -2,6 +2,7 @@
 
 ## 2026-11-15 — cu.uci.android.apklis-v202609030.apk — SHA-256: `4d23c1a911ed4a9b53762ab44fe8f6371a58a32072c055c26444b9de25ace305`
 
+- Ran `make compile-audit` against `android-37.0/android.jar` and `.workspace/tools/target-bytecode.jar` (`javac 17.0.15`) on 24 clean sources + generated `R.java`, observing 48 parse errors in 3 files (`ApkDownloadService.java`, `PaymentProvider.java`, `AppDetailActivity.java`) from JADX `??` unknown-type placeholders, and recorded exact findings in `docs/java-compilation.md`.
 - Copied JADX `defpackage` collaborator sources (`src/defpackage/{j42,rt3,uo1,wh}.java`) and reconstructed their 4 clean Java classes under `app/src/main/java/cu/uci/android/apklis/data/` (`AccountManagerHelper`, `UserPreferences`, `LicenseResponse`, `ApklisApiService`).
 - Updated `mappings/classes.json` status for `defpackage.{j42,rt3,uo1,wh}` to `reconstructed`, resolving all 8 `mapping_issues` (`mapping_issues: 0`).
 - Verified the 2 unlinked files in `src/` (`R.java` and `MainActivity$setupAdapters$expandGridLM$1$1.java`, no `BuildConfig.java`) in `docs/unmapped-source-review.md`.
